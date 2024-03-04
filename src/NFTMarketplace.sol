@@ -1,7 +1,7 @@
 // SPDX-License-Identifier:  AGPL-3.0-only
 pragma solidity ^0.8.19;
 
-// Importar la interfaz de ERC721 para interactuar con los NFTs
+// Imports the IERC721 interface to interact with NFT´s
 import "../lib/forge-std/src/interfaces/IERC721.sol";
 
 /// @title A marketplace for NFTs in Solidity
