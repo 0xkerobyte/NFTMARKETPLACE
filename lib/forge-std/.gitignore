@@ -1,0 +1,8 @@
+cache/
+out/
+.vscode
+.idea
+
+/// testCancelBuyOffer como devolver el ether o el nft si el deadline se acaba
+/// testFailCreateBuyOfferNFTNotForSale() Reverts
+/// testFailAcceptBuyOfferInvalidDeadline Reverts
