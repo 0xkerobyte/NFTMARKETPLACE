@@ -1,15 +1,24 @@
 // SPDX-License-Identifier: AGPL-3.0-only
-pragma solidity ^0.8.19;
+pragma solidity ^0.8.23;
 
 import "forge-std/Test.sol";
-import {NFTMarketplace} from "../src/NFTMarketplace.sol";
+import {NFTMarketplace} from "../../src/NFTMarketplace.sol";
+import {NFTMarketplaceV2} from "../../src/NFTMarketplaceV2.sol";
+import {ProxyV1} from "../../src/ProxyV1.sol";
+import {MockERC721} from "../../test/Mocks/ERC721mock.sol";
 
-import {MockERC721} from "../test/Mocks/ERC721mock.sol";
+interface IMarketplace {
+    function version() external view returns (uint256);
+}
 
 contract NFTMarketplaceTest is Test, MockERC721 {
     NFTMarketplace public nftmarketplace;
+    NFTMarketplaceV2 public nftmarketplace2;
+    NFTMarketplace public nfttest;
     MockERC721 public mockerc721;
+    ProxyV1 public proxy;
 
+    address contractOwner;
     address nftOwner = address(1);
     address nonOwner = address(2);
     uint256 tokenId = 1;
@@ -34,10 +43,40 @@ contract NFTMarketplaceTest is Test, MockERC721 {
     function setUp() public {
         /// Marketplace Contract
         nftmarketplace = new NFTMarketplace("TESTING_PLACE");
+
+        /// Marketplace2 Contract
+        nftmarketplace2 = new NFTMarketplaceV2("TESTING_PLACE2");
+
         /// Mock ERC721 Contract
         mockerc721 = new MockERC721();
+
         /// We initialize the ERC721 Contract with the Name TEST
         mockerc721.initialize("TEST", "TST");
+
+        /// We initialize the proxy
+        proxy = new ProxyV1(
+            address(nftmarketplace),
+            abi.encodeWithSignature("initialize(string)", "MarketPlaceNFT")
+        );
+
+        /// Checking the owner of the proxy
+        (bool ok, bytes memory answer) = address(proxy).call(
+            abi.encodeWithSignature("contractOwner()")
+        );
+        require(ok, "Call failed");
+
+        /// Checking the marketplace´s name
+        (bool ok2, bytes memory answer2) = address(proxy).call(
+            abi.encodeWithSignature("marketplaceName()")
+        );
+        require(ok2, "Call failed marketplaceName()");
+        string memory marketplaceName = abi.decode(answer2, (string));
+        assertEq(marketplaceName, "MarketPlaceNFT");
+
+        contractOwner = abi.decode(answer, (address));
+        assertEq(contractOwner, address(this));
+
+        /// Funding the users to test the contract
 
         vm.deal(nftOwner, 10 ether);
         assertEq(nftOwner.balance, 10 ether);
@@ -47,6 +86,66 @@ contract NFTMarketplaceTest is Test, MockERC721 {
 
         // Mint NFT to nftOwner
         mockerc721.mint(address(nftOwner), tokenId);
+    }
+
+    function testFailInitialize() public {
+        /// We try to initialize the proxy again, it should fail because is already initialized
+        vm.expectRevert();
+        (bool ok, ) = address(proxy).call(
+            abi.encodeWithSignature("initialize(string)", "MarketPlaceNFT")
+        );
+        vm.expectRevert();
+        require(ok, "Call failed initialize()");
+    }
+
+    function testGetImplementation() public {
+        /// Getting the implementation to see is correct
+        address implementation = proxy.getImplementation();
+        assertEq(
+            implementation,
+            address(nftmarketplace),
+            "Implementation address should match"
+        );
+    }
+
+    function testAuthorizeUpgrades() public {
+        /// Updating the proxy to point to a new implemmentation
+        vm.startPrank(address(contractOwner));
+        (bool ok, ) = address(proxy).call(
+            abi.encodeWithSignature(
+                "upgradeToAndCall(address,bytes)",
+                address(nftmarketplace2),
+                ""
+            )
+        );
+        require(ok, "Upgrade failed upgradeToAndCall _ NotOwner");
+
+        /// Checking the proxy is pointing to the new implementation correctly
+        address implementation = proxy.getImplementation();
+        assertEq(
+            implementation,
+            address(nftmarketplace2),
+            "Implementation address should match"
+        );
+
+        uint256 version = IMarketplace(address(proxy)).version();
+        console.log(version);
+        vm.stopPrank();
+    }
+
+    function testFailUnAuthorizeUpgrades() public {
+        vm.startPrank(address(nonOwner));
+        vm.expectRevert();
+        (bool ok, ) = address(proxy).call(
+            abi.encodeWithSignature(
+                "upgradeToAndCall(address,bytes)",
+                address(nftmarketplace),
+                ""
+            )
+        );
+        vm.expectRevert();
+        require(ok, "Upgrade failed upgradeToAndCall _ NotOwner");
+        vm.stopPrank();
     }
 
     function testOnERC721Received() public {
