@@ -35,6 +35,8 @@ Why is the UUPS Proxy so great?
 * Security: It boosts the security of smart contracts by allowing logic upgrades without altering the proxy's own code.
 <br>
 * Efficiency: It's designed to streamline processes, allowing logic upgrades without needing to redeploy the entire contract code.
+<br>
+<br>
 For those who dive deep, you can peek at the code itself in the OpenZeppelin library under openzeppelin-contracts/contracts/proxy/utils/UUPSUpgradeable.sol. This is where all the magic is detailed!
 <br>
 UUPS Proxies are a fantastic tool for keeping your blockchain applications flexible, secure, and efficient.
