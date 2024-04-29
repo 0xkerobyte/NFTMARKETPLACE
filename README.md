@@ -132,6 +132,9 @@ event BuyOfferCancelled(uint256 indexed offerId);
 <br>
 <br>
 ERRORS
+<br>
+<br>
+
 ```solidity
 error NotOwner()  /// Indicates that the caller is not the owner of the smart contract.
 
