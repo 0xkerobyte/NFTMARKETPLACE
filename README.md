@@ -57,7 +57,7 @@ UUPSUpgradeable
 
 Storage - State Variables and Complex Types :
 
-```ruby
+```solidity
     uint256 public sellOfferCounter;
     uint256 public buyOfferCounter;
     string public marketplaceName;
