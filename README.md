@@ -29,11 +29,14 @@ Think of a proxy like a middleman in Solidity. It sits between the user and anot
 
 Why is the UUPS Proxy so great?
 
-Flexibility: It lets you update the contract's logic—like fixing bugs or adding new features—without the hassle of deploying a new contract.
-Security: It boosts the security of smart contracts by allowing logic upgrades without altering the proxy's own code.
-Efficiency: It's designed to streamline processes, allowing logic upgrades without needing to redeploy the entire contract code.
+<br>
+* Flexibility: It lets you update the contract's logic—like fixing bugs or adding new features—without the hassle of deploying a new contract.
+<br>
+* Security: It boosts the security of smart contracts by allowing logic upgrades without altering the proxy's own code.
+<br>
+* Efficiency: It's designed to streamline processes, allowing logic upgrades without needing to redeploy the entire contract code.
 For those who dive deep, you can peek at the code itself in the OpenZeppelin library under openzeppelin-contracts/contracts/proxy/utils/UUPSUpgradeable.sol. This is where all the magic is detailed!
-
+<br>
 UUPS Proxies are a fantastic tool for keeping your blockchain applications flexible, secure, and efficient.
 
 
