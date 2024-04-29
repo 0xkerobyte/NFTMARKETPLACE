@@ -184,6 +184,8 @@ FUNCTIONS
         bytes calldata data
     ) external returns (bytes4) {...}
 ```
+<br>
+<br>
 This function is called automatically by the NFT contract when an NFT is about to be transferred to this marketplace.
 It ensures the successful reception of the NFT by emitting an event to acknowledge its arrival.
 If the function does not return the correct value, the NFT transfer will fail.
