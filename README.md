@@ -21,7 +21,7 @@ Testing with Foundry:
 We’ve been putting everything through its paces using Foundry, a top-notch tool for testing Solidity smart contracts. It’s flexible, efficient, and makes sure our marketplace runs without a hitch.
 
 
-##UUPS Proxy
+## UUPS Proxy
 
 The Proxy UUPS, or Universal Upgradeable Proxy Standard. It’s a special kind of smart contract in Solidity that makes upgrading the logic of a contract super smooth, without the need to redeploy the whole thing.
 
@@ -42,7 +42,7 @@ UUPS Proxies are a fantastic tool for keeping your blockchain applications flexi
 
 Solidity Version Directive :
 
-pragma solidity ^0.8.19;
+pragma solidity ^0.8.23;
 <br>
 <br>
 Library :
