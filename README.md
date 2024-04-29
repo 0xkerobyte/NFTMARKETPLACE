@@ -43,11 +43,16 @@ The Components of the Project:
 Solidity Version Directive :
 
 pragma solidity ^0.8.19;
+<br>
+<br>
 Library :
 
 https://github.com/OpenZeppelin/openzeppelin-contracts
+<br>
+<br>
 Inheritance :
-
+<br>
+<br>
 UUPSUpgradeable
 
 Storage - State Variables and Complex Types :
