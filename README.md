@@ -72,7 +72,7 @@ contractOwner: The owner of the smart contract.
 
 marketplaceName: This is the name of our marketplace, which is set when the contract is initially created.
 
-```
+```solidity
     mapping(uint256 => Offer) public sellOffers;
     mapping(uint256 => Offer) public buyOffers;
 ```
@@ -81,7 +81,7 @@ marketplaceName: This is the name of our marketplace, which is set when the cont
 
 'buyOffers': A mapping of uint256 to Offer, which holds all the buy orders. In a buy order, the order creator specifies an amount of ETH they are offering and identifies the NFT they wish to acquire.
 
-```
+```solidity
     struct Offer {
         address nftAddress;
         uint256 tokenId; 
@@ -108,7 +108,7 @@ isEnded: A true/false value indicating whether the offer has been accepted or ca
 EVENTS
 <br>
 <br>
-```
+```solidity
     event SellOfferCreated(uint256 indexed offerId);
     event SellOfferAccepted(uint256 indexed offerId, address indexed buyer);
     event SellOfferCancelled(uint256 indexed offerId);
@@ -128,7 +128,7 @@ BuyOfferCreated: Declares an event that logs the creation of a new buy offer wit
 BuyOfferAccepted: Declares an event that logs the acceptance of a buy offer, capturing the offer's unique identifier and the seller's address.
 
 BuyOfferCancelled: Declares an event that logs the cancellation of a buy offer, noting its unique identifier.
-```
+```solidity
   error NotOwner();
     error NotAllowedToTransfer();
     error InvalidDeadline();
@@ -147,7 +147,7 @@ BuyOfferCancelled: Declares an event that logs the cancellation of a buy offer, 
     error BuyOfferExpired();
     error BuyOrderAlreadyEnded();
 ```
-```
+
 NotOwner: Indicates that the caller is not the owner of the smart contract.
 NotAllowedToTransfer: Indicates that the caller is not allowed to transfer the asset.
 InvalidDeadline: Indicates that the provided deadline is invalid or has already passed.
@@ -165,8 +165,8 @@ NotNFTOwner: Indicates that the caller is not the owner of the NFT.
 BuyOfferAlreadyAccepted: Indicates that the buy offer has already been accepted.
 BuyOfferExpired: Indicates that the buy offer has expired.
 BuyOrderAlreadyEnded: Indicates that the buy order has already been ended.
-```
-```
+
+```solidity
     function onERC721Received(
         address operator,
         address from,
@@ -178,7 +178,7 @@ This function is called automatically by the NFT contract when an NFT is about t
 It ensures the successful reception of the NFT by emitting an event to acknowledge its arrival.
 If the function does not return the correct value, the NFT transfer will fail.
 
-```
+```solidity
     function checkIfTokenExist(
         address NFTcontract,
         uint _tokenId
@@ -187,7 +187,7 @@ If the function does not return the correct value, the NFT transfer will fail.
 Checks if a specific NFT exists within a collection by verifying its presence in the provided contract and with the given token ID.
 This function is read-only and does not alter any state, providing a quick way to verify NFT existence without modifying the contract.
 
-```
+```solidity
 function getSellOffer(uint256 _offerId) public view returns (address nftAddress, uint256 stokenId, address offerer, uint256 price, uint256 deadline, bool isEnded);
 ```
 Retrieves the details of a selling offer by its unique identifier.
@@ -199,7 +199,7 @@ offerer: The address of the seller who created the offer.
 price: The price of the offer in ETH.
 deadline: The maximum date by which the offer can be accepted.
 isEnded: A boolean indicating whether the offer has ended.
-```
+```solidity
 function getBuyOffer(uint256 _offerId) public view returns (address nftAddress, uint256 stokenId, address offerer, uint256 price, uint256 deadline, bool isEnded);
 ```
 Retrieves the details of a buying offer by its unique identifier.
@@ -217,7 +217,7 @@ deadline: The maximum date by which the offer can be accepted.
 <br>
 isEnded: A boolean indicating whether the offer has ended.
 <br>
-```
+```solidity
 function createSellOffer(address _nftAddress, uint256 _tokenId, uint256 _price, uint256 _deadline) external;
 ```
 Creates a new sell offer for an NFT.
@@ -230,17 +230,17 @@ _price: The price of the NFT in ETH.
 <br>
 _deadline: The deadline by which the offer must be accepted.
 <br>
-```
+```solidity
 function acceptSellOffer(uint256 _offerId) external payable;
 ```
 Accepts a sell offer.
 _offerId: The unique identifier of the sell offer to accept.
-```
+```solidity
 function cancelSellOffer(uint256 _offerId) external;
 ```
 Cancels a sell offer.
 _offerId: The unique identifier of the sell offer to cancel.
-```
+```solidity
 function createBuyOffer(address _nftAddress, uint256 _tokenId, uint256 _deadline) external payable;
 ```
 Creates a new buy offer for an NFT.
@@ -250,7 +250,7 @@ _nftAddress: The address of the NFT contract.
 _tokenId: The ID of the NFT being requested.
 <br>
 _deadline: The deadline by which the offer must be accepted.
-```
+```solidity
 function acceptBuyOffer(uint256 _offerId) external;
 ```
 Accepts a buy offer.
@@ -261,12 +261,12 @@ function cancelBuyOffer(uint256 _offerId) external;
 Cancels a buy offer.
 _offerId: The unique identifier of the buy offer to cancel.
 
-```
+```solidity
 function _authorizeUpgrade(address newImplementation) internal override;
 ```
 Authorizes an upgrade to the smart contract's implementation.
 newImplementation: The address of the new implementation contract.
-```
+```solidity
 function version() public pure returns (uint256);
 ```
 Retrieves the version of the implementation.
