@@ -129,7 +129,7 @@ BuyOfferAccepted: Declares an event that logs the acceptance of a buy offer, cap
 
 BuyOfferCancelled: Declares an event that logs the cancellation of a buy offer, noting its unique identifier.
 ```solidity
-  error NotOwner();
+    error NotOwner();
     error NotAllowedToTransfer();
     error InvalidDeadline();
     error PriceMustBeGreaterThanZero();
@@ -147,24 +147,41 @@ BuyOfferCancelled: Declares an event that logs the cancellation of a buy offer, 
     error BuyOfferExpired();
     error BuyOrderAlreadyEnded();
 ```
-
+<br>
 NotOwner: Indicates that the caller is not the owner of the smart contract.
+<br>
 NotAllowedToTransfer: Indicates that the caller is not allowed to transfer the asset.
+<br>
 InvalidDeadline: Indicates that the provided deadline is invalid or has already passed.
+<br>
 PriceMustBeGreaterThanZero: Indicates that the price specified must be greater than zero.
+<br>
 SellOrderAlreadyEnded: Indicates that the sell order has already been ended.
+<br>
 NotOfferCreator: Indicates that the caller is not the creator of the offer.
+<br>
 DeadlineNotPassed: Indicates that the deadline for the offer has not yet passed.
+<br>
 SellOfferAlreadyAccepted: Indicates that the sell offer has already been accepted.
+<br>
 SellOfferExpired: Indicates that the sell offer has expired.
+<br>
 IncorrectETHAmount: Indicates that the amount of Ethereum sent is incorrect.
+<br>
 EtherTransferFailed: Indicates that the transfer of Ethereum failed.
+<br>
 NFTNotForSale: Indicates that the NFT is not currently for sale.
+<br>
 FailedToSendEther: Indicates that the attempt to send Ethereum failed.
+<br>
 NotNFTOwner: Indicates that the caller is not the owner of the NFT.
+<br>
 BuyOfferAlreadyAccepted: Indicates that the buy offer has already been accepted.
+<br>
 BuyOfferExpired: Indicates that the buy offer has expired.
+<br>
 BuyOrderAlreadyEnded: Indicates that the buy order has already been ended.
+<br>
 
 ```solidity
     function onERC721Received(
