@@ -52,13 +52,13 @@ UUPSUpgradeable
 
 Storage - State Variables and Complex Types :
 
-´´´
+```
     uint256 public sellOfferCounter;
     uint256 public buyOfferCounter;
     string public marketplaceName;
     address public contractOwner;
 
-´´´
+```
 sellOfferIdCounter: This counter increases every time a new sales order is created, ensuring each one has a unique identifier.
 
 buyOfferIdCounter: Similar to the sales counter, this one goes up with every new purchase order, also providing unique identifiers.
@@ -67,16 +67,16 @@ contractOwner: The owner of the smart contract.
 
 marketplaceName: This is the name of our marketplace, which is set when the contract is initially created.
 
-´´´
+```
     mapping(uint256 => Offer) public sellOffers;
     mapping(uint256 => Offer) public buyOffers;
-´´´
+```
 
 'sellOffers': A mapping of uint256 to Offer, which records all the sell orders. In a sell order, the order creator lists an NFT for sale and sets the amount of ETH they wish to receive in exchange.
 
 'buyOffers': A mapping of uint256 to Offer, which holds all the buy orders. In a buy order, the order creator specifies an amount of ETH they are offering and identifies the NFT they wish to acquire.
 
-´´´
+```
     struct Offer {
         address nftAddress;
         uint256 tokenId; 
@@ -85,7 +85,7 @@ marketplaceName: This is the name of our marketplace, which is set when the cont
         uint256 deadline; 
         bool isEnded; 
     }
-´´´
+```
 
 nftAddress: The address of the NFT contract being offered.
 tokenId: The ID of the NFT that's up for offer.
@@ -95,7 +95,7 @@ deadline: The last date by which the offer must be accepted.
 isEnded: A true/false value indicating whether the offer has been accepted or cancelled.
 
 EVENTS
-´´´
+```
     event SellOfferCreated(uint256 indexed offerId);
     event SellOfferAccepted(uint256 indexed offerId, address indexed buyer);
     event SellOfferCancelled(uint256 indexed offerId);
@@ -103,7 +103,7 @@ EVENTS
     event BuyOfferCreated(uint256 indexed offerId);
     event BuyOfferAccepted(uint256 indexed offerId, address indexed seller);
     event BuyOfferCancelled(uint256 indexed offerId);
-´´´
+```
 SellOfferCreated: Declares an event that logs the creation of a new sell offer with a unique identifier.
 
 SellOfferAccepted: Declares an event that logs the acceptance of a sell offer, capturing the offer's unique identifier and the buyer's address.
@@ -115,7 +115,7 @@ BuyOfferCreated: Declares an event that logs the creation of a new buy offer wit
 BuyOfferAccepted: Declares an event that logs the acceptance of a buy offer, capturing the offer's unique identifier and the seller's address.
 
 BuyOfferCancelled: Declares an event that logs the cancellation of a buy offer, noting its unique identifier.
-´´´
+```
   error NotOwner();
     error NotAllowedToTransfer();
     error InvalidDeadline();
@@ -133,7 +133,7 @@ BuyOfferCancelled: Declares an event that logs the cancellation of a buy offer, 
     error BuyOfferAlreadyAccepted();
     error BuyOfferExpired();
     error BuyOrderAlreadyEnded();
-´´´
+```
 NotOwner: Indicates that the caller is not the owner of the smart contract.
 NotAllowedToTransfer: Indicates that the caller is not allowed to transfer the asset.
 InvalidDeadline: Indicates that the provided deadline is invalid or has already passed.
@@ -152,30 +152,30 @@ BuyOfferAlreadyAccepted: Indicates that the buy offer has already been accepted.
 BuyOfferExpired: Indicates that the buy offer has expired.
 BuyOrderAlreadyEnded: Indicates that the buy order has already been ended.
 
-´´´
+```
     function onERC721Received(
         address operator,
         address from,
         uint256 tokenId,
         bytes calldata data
     ) external returns (bytes4) {...}
-´´´
+```
 This function is called automatically by the NFT contract when an NFT is about to be transferred to this marketplace.
 It ensures the successful reception of the NFT by emitting an event to acknowledge its arrival.
 If the function does not return the correct value, the NFT transfer will fail.
 
-´´´
+```
     function checkIfTokenExist(
         address NFTcontract,
         uint _tokenId
     ) public view returns (bool) {...}
-´´´
+```
 Checks if a specific NFT exists within a collection by verifying its presence in the provided contract and with the given token ID.
 This function is read-only and does not alter any state, providing a quick way to verify NFT existence without modifying the contract.
 
-´´´
+```
 function getSellOffer(uint256 _offerId) public view returns (address nftAddress, uint256 stokenId, address offerer, uint256 price, uint256 deadline, bool isEnded);
-´´´
+```
 Retrieves the details of a selling offer by its unique identifier.
 _offerId: The unique identifier of the selling offer.
 
@@ -185,9 +185,9 @@ offerer: The address of the seller who created the offer.
 price: The price of the offer in ETH.
 deadline: The maximum date by which the offer can be accepted.
 isEnded: A boolean indicating whether the offer has ended.
-´´´
+```
 function getBuyOffer(uint256 _offerId) public view returns (address nftAddress, uint256 stokenId, address offerer, uint256 price, uint256 deadline, bool isEnded);
-´´´
+```
 Retrieves the details of a buying offer by its unique identifier.
 _offerId: The unique identifier of the buying offer.
 
@@ -197,34 +197,34 @@ offerer: The address of the buyer who created the offer.
 price: The price offered by the buyer in ETH.
 deadline: The maximum date by which the offer can be accepted.
 isEnded: A boolean indicating whether the offer has ended.
-´´´
+```
 function createSellOffer(address _nftAddress, uint256 _tokenId, uint256 _price, uint256 _deadline) external;
-´´´
+```
 Creates a new sell offer for an NFT.
 _nftAddress: The address of the NFT contract.
 _tokenId: The ID of the NFT being offered for sale.
 _price: The price of the NFT in ETH.
 _deadline: The deadline by which the offer must be accepted.
-´´´
+```
 function acceptSellOffer(uint256 _offerId) external payable;
-´´´
+```
 Accepts a sell offer.
 _offerId: The unique identifier of the sell offer to accept.
-´´´
+```
 function cancelSellOffer(uint256 _offerId) external;
-´´´
+```
 Cancels a sell offer.
 _offerId: The unique identifier of the sell offer to cancel.
-´´´
+```
 function createBuyOffer(address _nftAddress, uint256 _tokenId, uint256 _deadline) external payable;
-´´´
+```
 Creates a new buy offer for an NFT.
 _nftAddress: The address of the NFT contract.
 _tokenId: The ID of the NFT being requested.
 _deadline: The deadline by which the offer must be accepted.
-´´´
+```
 function acceptBuyOffer(uint256 _offerId) external;
-´´´
+```
 Accepts a buy offer.
 _offerId: The unique identifier of the buy offer to accept.
 
@@ -233,14 +233,14 @@ function cancelBuyOffer(uint256 _offerId) external;
 Cancels a buy offer.
 _offerId: The unique identifier of the buy offer to cancel.
 
-´´´
+```
 function _authorizeUpgrade(address newImplementation) internal override;
-´´´
+```
 Authorizes an upgrade to the smart contract's implementation.
 newImplementation: The address of the new implementation contract.
-´´´
+```
 function version() public pure returns (uint256);
-´´´
+```
 Retrieves the version of the implementation.
 Returns: version of the implementation.
 
@@ -264,4 +264,4 @@ We put Foundry to work to guarantee our marketplace's functionality and security
 Writing our tests directly in Solidity.
 Running these tests using the forge test command.
 Making sure everything performs flawlessly on the blockchain environment we choose.
-In short, creating an NFT marketplace is a sophisticated yet thrilling task that blends development savvy with an in-depth knowledge of smart contracts and the strategic use of testing tools like Foundry. L
+In short, creating an NFT marketplace is a sophisticated yet thrilling task that blends development savvy with an in-depth knowledge of smart contracts and the strategic use of testing tools like Foundry.
