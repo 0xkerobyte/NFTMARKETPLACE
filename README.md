@@ -134,6 +134,7 @@ BuyOfferCancelled: Declares an event that logs the cancellation of a buy offer, 
     error BuyOfferExpired();
     error BuyOrderAlreadyEnded();
 ```
+```
 NotOwner: Indicates that the caller is not the owner of the smart contract.
 NotAllowedToTransfer: Indicates that the caller is not allowed to transfer the asset.
 InvalidDeadline: Indicates that the provided deadline is invalid or has already passed.
@@ -151,7 +152,7 @@ NotNFTOwner: Indicates that the caller is not the owner of the NFT.
 BuyOfferAlreadyAccepted: Indicates that the buy offer has already been accepted.
 BuyOfferExpired: Indicates that the buy offer has expired.
 BuyOrderAlreadyEnded: Indicates that the buy order has already been ended.
-
+```
 ```
     function onERC721Received(
         address operator,
