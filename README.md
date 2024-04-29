@@ -198,11 +198,17 @@ Retrieves the details of a buying offer by its unique identifier.
 _offerId: The unique identifier of the buying offer.
 
 nftAddress: The address of the NFT contract associated with the offer.
+<br>
 stokenId: The ID of the NFT being requested.
+<br>
 offerer: The address of the buyer who created the offer.
+<br>
 price: The price offered by the buyer in ETH.
+<br>
 deadline: The maximum date by which the offer can be accepted.
+<br>
 isEnded: A boolean indicating whether the offer has ended.
+<br>
 ```
 function createSellOffer(address _nftAddress, uint256 _tokenId, uint256 _price, uint256 _deadline) external;
 ```
