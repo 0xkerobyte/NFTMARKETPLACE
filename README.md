@@ -99,7 +99,10 @@ deadline: The last date by which the offer must be accepted.
 <br>
 isEnded: A true/false value indicating whether the offer has been accepted or cancelled.
 <br>
+<br>
 EVENTS
+<br>
+<br>
 ```
     event SellOfferCreated(uint256 indexed offerId);
     event SellOfferAccepted(uint256 indexed offerId, address indexed buyer);
@@ -236,8 +239,11 @@ _offerId: The unique identifier of the sell offer to cancel.
 function createBuyOffer(address _nftAddress, uint256 _tokenId, uint256 _deadline) external payable;
 ```
 Creates a new buy offer for an NFT.
+<br>
 _nftAddress: The address of the NFT contract.
+<br>
 _tokenId: The ID of the NFT being requested.
+<br>
 _deadline: The deadline by which the offer must be accepted.
 ```
 function acceptBuyOffer(uint256 _offerId) external;
