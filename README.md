@@ -171,8 +171,11 @@ error BuyOfferExpired()  /// Indicates that the buy offer has expired.
 error BuyOrderAlreadyEnded()  /// Indicates that the buy order has already been ended.
 
 ```
-
-
+<br>
+<br>
+FUNCTIONS
+<br>
+<br>
 ```solidity
     function onERC721Received(
         address operator,
