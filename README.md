@@ -213,10 +213,15 @@ isEnded: A boolean indicating whether the offer has ended.
 function createSellOffer(address _nftAddress, uint256 _tokenId, uint256 _price, uint256 _deadline) external;
 ```
 Creates a new sell offer for an NFT.
+<br>
 _nftAddress: The address of the NFT contract.
+<br>
 _tokenId: The ID of the NFT being offered for sale.
+<br>
 _price: The price of the NFT in ETH.
+<br>
 _deadline: The deadline by which the offer must be accepted.
+<br>
 ```
 function acceptSellOffer(uint256 _offerId) external payable;
 ```
