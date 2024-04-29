@@ -128,6 +128,10 @@ BuyOfferCreated: Declares an event that logs the creation of a new buy offer wit
 BuyOfferAccepted: Declares an event that logs the acceptance of a buy offer, capturing the offer's unique identifier and the seller's address.
 
 BuyOfferCancelled: Declares an event that logs the cancellation of a buy offer, noting its unique identifier.
+<br>
+<br>
+<br>
+ERRORS
 ```solidity
     error NotOwner();
     error NotAllowedToTransfer();
