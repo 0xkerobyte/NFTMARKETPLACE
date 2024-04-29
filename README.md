@@ -152,40 +152,42 @@ ERRORS
     error BuyOrderAlreadyEnded();
 ```
 <br>
+<br>
 NotOwner: Indicates that the caller is not the owner of the smart contract.
 <br>
+<br>
 NotAllowedToTransfer: Indicates that the caller is not allowed to transfer the asset.
-<br>
+<br><br>
 InvalidDeadline: Indicates that the provided deadline is invalid or has already passed.
-<br>
+<br><br>
 PriceMustBeGreaterThanZero: Indicates that the price specified must be greater than zero.
-<br>
+<br><br>
 SellOrderAlreadyEnded: Indicates that the sell order has already been ended.
-<br>
+<br><br>
 NotOfferCreator: Indicates that the caller is not the creator of the offer.
-<br>
+<br><br>
 DeadlineNotPassed: Indicates that the deadline for the offer has not yet passed.
-<br>
+<br><br>
 SellOfferAlreadyAccepted: Indicates that the sell offer has already been accepted.
-<br>
+<br><br>
 SellOfferExpired: Indicates that the sell offer has expired.
-<br>
+<br><br>
 IncorrectETHAmount: Indicates that the amount of Ethereum sent is incorrect.
-<br>
+<br><br>
 EtherTransferFailed: Indicates that the transfer of Ethereum failed.
-<br>
+<br><br>
 NFTNotForSale: Indicates that the NFT is not currently for sale.
-<br>
+<br><br>
 FailedToSendEther: Indicates that the attempt to send Ethereum failed.
-<br>
+<br><br>
 NotNFTOwner: Indicates that the caller is not the owner of the NFT.
-<br>
+<br><br>
 BuyOfferAlreadyAccepted: Indicates that the buy offer has already been accepted.
-<br>
+<br><br>
 BuyOfferExpired: Indicates that the buy offer has expired.
-<br>
+<br><br>
 BuyOrderAlreadyEnded: Indicates that the buy order has already been ended.
-<br>
+<br><br>
 
 ```solidity
     function onERC721Received(
