@@ -88,12 +88,17 @@ marketplaceName: This is the name of our marketplace, which is set when the cont
 ```
 
 nftAddress: The address of the NFT contract being offered.
+<br>
 tokenId: The ID of the NFT that's up for offer.
+<br>
 offerer: The address of the person who created the offer.
+<br>
 price: The price of the offer, listed in Ethereum (ETH).
+<br>
 deadline: The last date by which the offer must be accepted.
+<br>
 isEnded: A true/false value indicating whether the offer has been accepted or cancelled.
-
+<br>
 EVENTS
 ```
     event SellOfferCreated(uint256 indexed offerId);
