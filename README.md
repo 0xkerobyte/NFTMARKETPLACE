@@ -302,6 +302,6 @@ The proxy serves as a go-between for users and the actual contract functions, en
 
 We put Foundry to work to guarantee our marketplace's functionality and security. It's our go-to for:
 Writing our tests directly in Solidity.
-Running these tests using the forge test command.
+Running these tests using the ```forge test command ```
 Making sure everything performs flawlessly on the blockchain environment we choose.
 In short, creating an NFT marketplace is a sophisticated yet thrilling task that blends development savvy with an in-depth knowledge of smart contracts and the strategic use of testing tools like Foundry.
