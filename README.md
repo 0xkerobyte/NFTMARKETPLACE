@@ -1,6 +1,6 @@
-#Marketplace NFT - Proxy UUPS
+# Marketplace NFT - Proxy UUPS
 
-##The Project :
+## The Project :
 
 We're diving into a super exciting project: developing a Non-Fungible Token (NFT) marketplace using Solidity, a popular programming language for Ethereum blockchain apps. This marketplace is going to be a fantastic spot for users to buy, sell, and explore various NFTs in a safe and transparent way.
 
@@ -38,7 +38,7 @@ UUPS Proxies are a fantastic tool for keeping your blockchain applications flexi
 
 
 
-##The Components of the Project:
+## The Components of the Project:
 
 Solidity Version Directive :
 
@@ -289,7 +289,7 @@ function version() public pure returns (uint256);
 Retrieves the version of the implementation.
 Returns: version of the implementation.
 
-##Conclusion: Crafting Our NFT Marketplace
+## Conclusion: Crafting Our NFT Marketplace
 
 Building an NFT marketplace is quite the venture, calling for a solid grasp of Solidity along with a toolkit of relevant technologies.
 
