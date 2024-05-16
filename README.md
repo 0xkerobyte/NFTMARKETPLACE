@@ -191,11 +191,14 @@ FUNCTIONS
     ) external returns (bytes4) {...}
 ```
 
+
 <br>
 <br>
 This function is called automatically by the NFT contract when an NFT is about to be transferred to this marketplace.
 It ensures the successful reception of the NFT by emitting an event to acknowledge its arrival.
 If the function does not return the correct value, the NFT transfer will fail.
+<br>
+<br>
 
 ```solidity
     function checkIfTokenExist(
@@ -203,8 +206,12 @@ If the function does not return the correct value, the NFT transfer will fail.
         uint _tokenId
     ) public view returns (bool) {...}
 ```
+<br>
+<br>
 Checks if a specific NFT exists within a collection by verifying its presence in the provided contract and with the given token ID.
 This function is read-only and does not alter any state, providing a quick way to verify NFT existence without modifying the contract.
+<br>
+<br>
 
 ```solidity
 function getSellOffer(uint256 _offerId) public view returns (address nftAddress, uint256 stokenId, address offerer, uint256 price, uint256 deadline, bool isEnded);
