@@ -54,7 +54,7 @@ contract NFTMarketplaceTest is Test, MockERC721 {
         mockerc721.initialize("TEST", "TST");
 
         /// We initialize the proxy
-        proxy = new ProxyV1(
+        proxy = new Proxy(
             address(nftmarketplace),
             abi.encodeWithSignature("initialize(string)", "MarketPlaceNFT")
         );
