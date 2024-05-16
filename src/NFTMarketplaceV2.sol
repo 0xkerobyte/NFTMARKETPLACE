@@ -11,7 +11,7 @@ import {UUPSUpgradeable} from "../../lib/openzeppelin-contracts-upgradeable/cont
 /// @notice You can use this contract to create and accept buy and sell offers for NFTs
 /// @dev This contract follows the natSpec standard and the check effects interactions pattern
 
-contract NFTMarketplaceV2 is UUPSUpgradeable {
+contract NFTMarketplaceV2 is UUPSUpgradeable, OwnableUpgradeable {
     /// Counter for sell orders
     uint256 public sellOfferCounter;
 
@@ -47,12 +47,9 @@ contract NFTMarketplaceV2 is UUPSUpgradeable {
         contractOwner = msg.sender;
     }
 
-    modifier onlyOwner() {
-        if (msg.sender != contractOwner) revert NotOwner();
-        _;
-    }
-
     function initialize(string memory _marketplaceName) external initializer {
+        __Ownable_init(msg.sender);
+        __UUPSUpgradeable_init();
         marketplaceName = _marketplaceName;
         contractOwner = msg.sender;
     }
@@ -211,7 +208,11 @@ contract NFTMarketplaceV2 is UUPSUpgradeable {
         });
 
         /// Transfer the NFT from the sender to the contract
-        IERC721(_nftAddress).transferFrom(msg.sender, address(this), _tokenId);
+        IERC721(_nftAddress).safeTransferFrom(
+            msg.sender,
+            address(this),
+            _tokenId
+        );
         /// Emit the SellOfferCreated event
         emit SellOfferCreated(offerId);
     }
