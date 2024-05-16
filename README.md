@@ -181,6 +181,7 @@ error BuyOrderAlreadyEnded()  /// Indicates that the buy order has already been 
 FUNCTIONS
 <br>
 <br>
+
 ```solidity
     function onERC721Received(
         address operator,
@@ -189,6 +190,7 @@ FUNCTIONS
         bytes calldata data
     ) external returns (bytes4) {...}
 ```
+
 <br>
 <br>
 This function is called automatically by the NFT contract when an NFT is about to be transferred to this marketplace.
