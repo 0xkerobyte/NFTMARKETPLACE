@@ -4,7 +4,7 @@ pragma solidity ^0.8.23;
 import "forge-std/Test.sol";
 import {NFTMarketplace} from "../../src/NFTMarketplace.sol";
 import {NFTMarketplaceV2} from "../../src/NFTMarketplaceV2.sol";
-import {ProxyV1} from "../../src/ProxyV1.sol";
+import {Proxy} from "../../src/Proxy.sol";
 import {MockERC721} from "../../test/Mocks/ERC721mock.sol";
 
 interface IMarketplace {
