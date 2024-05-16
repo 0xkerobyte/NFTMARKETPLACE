@@ -8,7 +8,7 @@ import "../../lib/openzeppelin-contracts/contracts/proxy/ERC1967/ERC1967Proxy.so
  * @author 0xkerobyte
  * @notice This smart contract is used as a UUPS Proxy (ERC1967Proxy) to connect your implementation securely and faster than transparent proxies.
  */
-contract ProxyV1 is ERC1967Proxy {
+contract Proxy is ERC1967Proxy {
     /**
      * @notice Initializes the upgradeable proxy with an initial implementation specified by `implementation`.
      * @param implementation,
